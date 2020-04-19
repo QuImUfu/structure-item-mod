@@ -75,7 +75,7 @@ public class MyPlacementSettings extends PlacementSettings {
     private boolean isValid(List<Template.BlockInfo> struct, BlockPos pos) {
         for (Template.BlockInfo bi : struct) {
             BlockPos posToCheck = bi.pos.add(pos);
-            if (world.isBlockPresent(posToCheck)) {
+            if (World.isValid(posToCheck)) {
                 Block blockToCheck = world.getBlockState(posToCheck).getBlock();
                 for (Block b : blacklist) {
                     if (blockToCheck.equals(b)) {

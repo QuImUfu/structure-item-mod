@@ -109,9 +109,11 @@ public class MyItem extends net.minecraft.item.Item {
             }
             Block current = c.getWorld().getBlockState(c.getPos()).getBlock();
             if (allowed != null && !current.equals(allowed)) {
+                TextComponent currentName = new TranslationTextComponent(current.getTranslationKey());
+                TextComponent allowedName = new TranslationTextComponent(allowed.getTranslationKey());
                 TranslationTextComponent message =
                         new TranslationTextComponent("items.structure.spawner.invalid.block.clicked",
-                                current.getNameTextComponent(), allowed.getNameTextComponent());
+                                currentName, allowedName);
                 sendPlayer(player, message);
                 return ActionResultType.FAIL;
             }
